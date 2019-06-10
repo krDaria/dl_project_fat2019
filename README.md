@@ -1,14 +1,13 @@
 ## DL project
 
 Соревнование: [FAT2019](https://www.kaggle.com/c/freesound-audio-tagging-2019)
-#
 Бейзлайн: https://github.com/m12sl/kaggle-freesound-2019-baseline
 #
-LSML:
+**LSML**:
+
 Вся инструкция из [readme.md](https://github.com/m12sl/kaggle-freesound-2019-baseline/blob/master/README.md)  выполнена.
 1.	Научились запускать тренировки (через tmux)
 ```
-**Запуск тренировки**
 # синхронизовать код
 Через tmux
 # зайти в нужную папку
@@ -18,7 +17,6 @@ python main.py --outpath ./runs/
 ```
 2.	Cмотреть графики в tensorboard 
 ```
-Посмотреть графики
 Через tmux
 # зайти в папку с запусками и запустить TB.  
 cd kaggle-freesound-2019-baseline/runs/
