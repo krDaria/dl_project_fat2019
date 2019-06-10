@@ -32,7 +32,7 @@ ssh -L 9009:localhost:6006 ubuntu@[public_server_ip]
 ./start_notebook.sh
 # зайти в браузере на https://[public_server_ip]:9999/tree/kaggle-freesound-2019-baseline
 ```
-4.	Отправлять лучшие чекпоинты как датасет на Kaggle через [Kaggle.api](https://github.com/Kaggle/kaggle-api) (**пример для запуска №1**)
+4.	Отправлять лучшие чекпоинты как датасет на Kaggle через [Kaggle.api](https://github.com/Kaggle/kaggle-api) (_пример для runs/1_)
 ```
 #На сервере
 kaggle datasets init -p ~/kaggle-freesound-2019-baseline/runs/0
