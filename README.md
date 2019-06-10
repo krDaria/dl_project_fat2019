@@ -68,25 +68,40 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
 
 3. Идеи возможного улучшения качества модели
   - Поменять `learning rate`
+ Пробовала разные расписания, в итоге, остановилась на 
   ```
+  CosineAnnealingLR
   ```
-  - Дольше учиться 
+  
+  - Увеличить количество эпох обучения
   ```
+  parser.add_argument('--epochs', default=30)
   ```
   - Больше батч 
   ```
+  parser.add_argument('--batch_size', default=64)
   ```
   - Изменить функцию активации `ReLU -> Sigmoid`
-  ```
-  ```
+
   - Поставить `batchnorm` после функции активации 
-  ```
-  ```
+
   - Добавить регуляризатор `dropout`
   ```
+  self.fc = nn.Sequential(
+            nn.Dropout(0.6),
+            nn.Linear(128, num_classes),
+         )
   ```
   - Попробовать другую архитектуру последнего слоя fc
   ```
+  self.fc = nn.Sequential(
+            nn.Dropout(0.5),
+            nn.Linear(512 * block.expansion, num_classes),
+            nn.PReLU(),
+            nn.BatchNorm1d(128),
+            nn.Dropout(0.1),
+            nn.Linear(128, num_classes),
+         )
   ```
   - Изменить предобработку данных (изменить окно преобразования Фурье, размер наложения окна)
   ```
