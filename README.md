@@ -75,7 +75,7 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   ```
   scheduler = CosineAnnealingLR(optimizer, T_max=t_max, eta_min=eta_min)
   ```
-  ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_change.png)
+  ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_change.png | width=500)
   
   _Результат_: ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_1.png)
   
