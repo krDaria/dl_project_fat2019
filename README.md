@@ -83,6 +83,7 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_change.png height="300">
   
   _Результат_: <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_1.png height="300">
+ 
  Результат хороший, видим, что прибавили точность
 
 Далее, я пробовала менять архитектуру сети:
@@ -115,6 +116,7 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   n_fft, hop
   ```
   _Результат_: <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_2.png height="300">
+  
   Данные подходы не принесли увеличение качества на validate
   
   ✅ Добавить аугментацию [`mixup`](https://www.inference.vc/mixup-data-dependent-data-augmentation/)
@@ -129,7 +131,6 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
       mixed_y = lam * y + (1 - lam) * y2
       return mixed_x, mixed_y, lam
   ```
-  _Результат_:   
   
   ✅ Изменить  `loss`
   
@@ -141,7 +142,9 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
 
   loss = F.binary_cross_entropy_with_logits(out, targets) + F.binary_cross_entropy(out1, t1)
   ```
-  _Результат_:  
+  _Результат_: <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/lwlrap.png height="300">
+  
+  Результат хороший, видим, что прибавили точность
   
   - _Не успела попробовать - изменение `sampler` в `DataLoader`_
 
