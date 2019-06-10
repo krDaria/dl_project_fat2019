@@ -110,20 +110,36 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
             nn.Linear(128, num_classes),
          )
   ```
-  _Результат_: Данные подходы не принесли увеличение качества 
-   
   ❌ Изменить предобработку данных (изменить размер окна преобразования Фурье, размер наложения окна)
   ```
+  n_fft, hop
   ```
-  _Результат_: 
+  _Результат_: <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_2.png height="300">
+  Данные подходы не принесли увеличение качества на validate
   
-  ✅ Добавить аугментацию `mixup`
+  ✅ Добавить аугментацию [`mixup`](https://www.inference.vc/mixup-data-dependent-data-augmentation/)
   ```
+  # mixup function
+  def mixup_data(x, y, alpha=1.0):
+      indices = torch.randperm(x.size()[0])
+      x2 = x[indices]
+      y2 = y[indices]
+
+      mixed_x = lam * x + (1 - lam) * x2
+      mixed_y = lam * y + (1 - lam) * y2
+      return mixed_x, mixed_y, lam
   ```
   _Результат_:   
   
   ✅ Изменить  `loss`
+  
+  Будем суммировать `binary_cross_entropy_with_logits` loss с `binary_cross_entropy` на отнормированных данных
   ```
+  out1 = torch.tensor(minmax_scale(out.reshape(-1).cpu().detach().numpy(), (0.00001,0.99999)))
+  t1 = torch.tensor(minmax_scale(targets.reshape(-1).cpu().detach().numpy(), (0.00001,0.99999)))
+  out1, t1 = map(Variable, (out1, t1))
+
+  loss = F.binary_cross_entropy_with_logits(out, targets) + F.binary_cross_entropy(out1, t1)
   ```
   _Результат_:  
   
