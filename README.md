@@ -68,36 +68,32 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
 ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/{branch}/{path}/image.png)
 
 3. Идеи возможного улучшения качества модели
- 
+
+ ✅ Увеличить количество эпох обучения
+  ```
+  parser.add_argument('--epochs', default=30)
+  ```
+ ✅ Больше батч 
+  ```
+  parser.add_argument('--batch_size', default=64)
+  ```
  ✅ Поменять `learning rate`
  
  Пробовала разные расписания, в итоге, остановилась на 
   ```
   scheduler = CosineAnnealingLR(optimizer, T_max=t_max, eta_min=eta_min)
   ```
-  ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_change.png | width=30)
+  ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_change.png)
   
   _Результат_: ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_1.png)
-  
-  ✅ Увеличить количество эпох обучения
-  ```
-  parser.add_argument('--epochs', default=30)
-  ```
-  _Результат_:    
-  
-  ✅ Больше батч 
-  ```
-  parser.add_argument('--batch_size', default=64)
-  ```
-  _Результат_: 
+ Результат хороший, видим, что прибавили точность
+
+Далее, я пробовала менять архитектуру сети:
   
   ❌ Изменить функцию активации `ReLU -> Sigmoid`
   
-  _Результат_:   
-  
   ❌ Поставить `batchnorm` после функции активации 
   
-  _Результат_:  
   
   ❌ Добавить регуляризатор `dropout`
   ```
@@ -106,8 +102,6 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
             nn.Linear(128, num_classes),
          )
   ```
-  _Результат_:  
-  
   ❌ Попробовать другую архитектуру последнего слоя fc
   ```
   self.fc = nn.Sequential(
@@ -119,7 +113,7 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
             nn.Linear(128, num_classes),
          )
   ```
-  _Результат_: 
+  _Результат_: Данные подходы не принесли увеличение качества 
    
   ❌ Изменить предобработку данных (изменить размер окна преобразования Фурье, размер наложения окна)
   ```
