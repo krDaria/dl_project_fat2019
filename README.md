@@ -68,20 +68,21 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
 ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/{branch}/{path}/image.png)
 
 3. Идеи возможного улучшения качества модели
-  ✅ Поменять `learning rate`
+ 
+ ✅ Поменять `learning rate`
  Пробовала разные расписания, в итоге, остановилась на 
   ```
   scheduler = CosineAnnealingLR(optimizer, T_max=t_max, eta_min=eta_min)
   ```
   ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/{branch}/{path}/image.png)
   
-  **Результат**:
+  _Результат_: 
   
   ✅ Увеличить количество эпох обучения
   ```
   parser.add_argument('--epochs', default=30)
   ```
-  **Результат**:   
+  _Результат_:    
   
   ✅ Больше батч 
   ```
