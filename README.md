@@ -67,7 +67,7 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
 3. Идеи возможного улучшения качества модели
 
 *Галочкой отмечено то, что дало прирост качества, крестиком - нет*
-
+#### 1 Часть:
  ✅ Увеличить количество эпох обучения
   ```
   parser.add_argument('--epochs', default=30)
@@ -81,17 +81,18 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
  Пробовала разные расписания и стартовые значения, в итоге, остановилась на 
   ```
   scheduler = CosineAnnealingLR(optimizer, T_max=t_max, eta_min=eta_min)
+  
   ```
+  В итоговой модели lr выглядит так
   <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_change.png height="300">
   
-  _Результат_: 
-  
-  В итоговой модели lr выглядит так
+  _Результат 1ой части_: 
   
   <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_1.png height="300">
  
  Результат хороший, видим, что прибавили точность
 
+#### 2 Часть:
 Далее, я пробовала менять архитектуру сети:
   
   ❌ Изменить функцию активации `ReLU -> Sigmoid`
@@ -121,10 +122,11 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   ```
   n_fft, hop
   ```
-  _Результат_: <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_2.png height="300">
+  _Результат 2ой части_: <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/loss_lrap_2.png height="300">
   
-  Данные подходы не принесли увеличение качества на validate
+  Данные подходы не принесли увеличение качества на validate (приведены графики на трейне: рыжий (выше всех) - со всеми улучшениями из 1ой части, остальные цвета - опробованные действия, по улучшению архитектуры - 2 часть)
   
+ #### 3 Часть: 
   ✅ Добавить аугментацию [`mixup`](https://www.inference.vc/mixup-data-dependent-data-augmentation/)
   ```
   # mixup function
@@ -152,7 +154,7 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   
   <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/lwlrap.png height="300">
   
-  Результат хороший, видим, что прибавили точность (приведены графики на валидационной части выборки, синий - с добавлением аугментации, голубой - с измененным лоссом, красный - бейзлайн, розовый - с улучшениями выше)
+  Результат хороший, видим, что прибавили точность (приведены графики на валидационной части выборки, синий - с добавлением аугментации, голубой - с измененным лоссом, красный - бейзлайн, розовый - со всеми улучшениями выше)
   
   Public Score: 0.529 (baseline - 0.51)
   
