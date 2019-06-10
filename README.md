@@ -90,9 +90,11 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   **Результат**: ✅ 
   
   - Изменить функцию активации `ReLU -> Sigmoid`
+  
   **Результат**: ❌ 
   
   - Поставить `batchnorm` после функции активации 
+  
   **Результат**: ❌ 
   
   - Добавить регуляризатор `dropout`
