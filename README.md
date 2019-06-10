@@ -7,7 +7,8 @@
 LSML:
 Вся инструкция из [readme.md](https://github.com/m12sl/kaggle-freesound-2019-baseline/blob/master/README.md)  выполнена.
 1.	Научились запускать тренировки (через tmux)
-```Запуск тренировки
+```
+**Запуск тренировки**
 # синхронизовать код
 Через tmux
 # зайти в нужную папку
@@ -16,7 +17,8 @@ cd kaggle-freesound-2019-baseline/
 python main.py --outpath ./runs/
 ```
 2.	Cмотреть графики в tensorboard 
-```Посмотреть графики
+```
+Посмотреть графики
 Через tmux
 # зайти в папку с запусками и запустить TB.  
 cd kaggle-freesound-2019-baseline/runs/
@@ -26,7 +28,8 @@ ssh -L 9009:localhost:6006 ubuntu@[public_server_ip]
 # зайти в браузере на http://localhost:9009 
 ```
 3.	Отлаживать скрипты. 
-```Через tmux
+```
+Через tmux
 ./start_notebook.sh
 # зайти в браузере на https://[public_server_ip]:9999/tree/kaggle-freesound-2019-baseline
 ```
