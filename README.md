@@ -1,9 +1,10 @@
 ## DL project
 
 Соревнование: [FAT2019](https://www.kaggle.com/c/freesound-audio-tagging-2019)
+
 Бейзлайн: https://github.com/m12sl/kaggle-freesound-2019-baseline
 #
-**LSML**:
+### **LSML**:
 
 Вся инструкция из [readme.md](https://github.com/m12sl/kaggle-freesound-2019-baseline/blob/master/README.md)  выполнена.
 1.	Научились запускать тренировки (через tmux)
@@ -58,4 +59,5 @@ path = './kaggle-freesound-2019-baseline/runs/1/last.pth'
 x = torch.load(path)
 torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/1/last1.pth')
 ```
-
+#
+### **DL**:
