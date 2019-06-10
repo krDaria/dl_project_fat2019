@@ -142,9 +142,13 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
 
   loss = F.binary_cross_entropy_with_logits(out, targets) + F.binary_cross_entropy(out1, t1)
   ```
-  _Результат_: <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/lwlrap.png height="300">
+  _Результат_: 
+  
+  <img src=https://github.com/krDaria/freesound_audio_tagging_2019/raw/master/images/lwlrap.png height="300">
   
   Результат хороший, видим, что прибавили точность (приведены графики на валидационной части выборки, синий - с добавлением аугментации, голубой - с измененным лоссом, красный - бейзлайн, розовый - с улучшениями выше)
+  
+  Public Score: 0.529 (baseline - )
   
   - _Не успела попробовать - изменение `sampler` в `DataLoader`_
 
