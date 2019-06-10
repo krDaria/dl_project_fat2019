@@ -74,21 +74,27 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   scheduler = CosineAnnealingLR(optimizer, T_max=t_max, eta_min=eta_min)
   ```
   ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/{branch}/{path}/image.png)
-  ✅ **Результат**:
+  
+  **Результат**:✅
+  
   - Увеличить количество эпох обучения
   ```
   parser.add_argument('--epochs', default=30)
   ```
-  ✅ **Результат**:
+  **Результат**:  ✅ 
+  
   - Больше батч 
   ```
   parser.add_argument('--batch_size', default=64)
   ```
-  ✅ **Результат**:
+  **Результат**: ✅ 
+  
   - Изменить функцию активации `ReLU -> Sigmoid`
-  ❌ **Результат**:
+  **Результат**: ❌ 
+  
   - Поставить `batchnorm` после функции активации 
-  ❌ **Результат**:
+  **Результат**: ❌ 
+  
   - Добавить регуляризатор `dropout`
   ```
   self.fc = nn.Sequential(
@@ -96,7 +102,8 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
             nn.Linear(128, num_classes),
          )
   ```
-  ❌ **Результат**:
+  **Результат**: ❌ 
+  
   - Попробовать другую архитектуру последнего слоя fc
   ```
   self.fc = nn.Sequential(
@@ -108,18 +115,22 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
             nn.Linear(128, num_classes),
          )
   ```
-  ❌ **Результат**:
+  **Результат**: ❌ 
+   
   - Изменить предобработку данных (изменить размер окна преобразования Фурье, размер наложения окна)
   ```
   ```
-  ❌ **Результат**:
+  **Результат**: ❌ 
+  
   - Добавить аугментацию `mixup`
   ```
   ```
-  ✅ **Результат**:
+  **Результат**: ✅ 
+  
   - Изменить  `loss`
   ```
   ```
-  ✅ **Результат**:
+  **Результат**: ✅ 
+  
   - _Не успела попробовать - изменение `sampler` в `DataLoader`_
 
