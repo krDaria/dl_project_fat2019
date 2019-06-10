@@ -68,45 +68,45 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
 ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/{branch}/{path}/image.png)
 
 3. Идеи возможного улучшения качества модели
-  - Поменять `learning rate`
+  ✅ Поменять `learning rate`
  Пробовала разные расписания, в итоге, остановилась на 
   ```
   scheduler = CosineAnnealingLR(optimizer, T_max=t_max, eta_min=eta_min)
   ```
   ![Image alt](https://github.com/krDaria/freesound_audio_tagging_2019/raw/{branch}/{path}/image.png)
   
-  **Результат**:✅
+  **Результат**:
   
-  - Увеличить количество эпох обучения
+  ✅ Увеличить количество эпох обучения
   ```
   parser.add_argument('--epochs', default=30)
   ```
-  **Результат**:  ✅ 
+  **Результат**:   
   
-  - Больше батч 
+  ✅ Больше батч 
   ```
   parser.add_argument('--batch_size', default=64)
   ```
-  **Результат**: ✅ 
+  _Результат_: 
   
-  - Изменить функцию активации `ReLU -> Sigmoid`
+  ❌ Изменить функцию активации `ReLU -> Sigmoid`
   
-  **Результат**: ❌ 
+  _Результат_:   
   
-  - Поставить `batchnorm` после функции активации 
+  ❌ Поставить `batchnorm` после функции активации 
   
-  **Результат**: ❌ 
+  _Результат_:  
   
-  - Добавить регуляризатор `dropout`
+  ❌ Добавить регуляризатор `dropout`
   ```
   self.fc = nn.Sequential(
             nn.Dropout(0.6),
             nn.Linear(128, num_classes),
          )
   ```
-  **Результат**: ❌ 
+  _Результат_:  
   
-  - Попробовать другую архитектуру последнего слоя fc
+  ❌ Попробовать другую архитектуру последнего слоя fc
   ```
   self.fc = nn.Sequential(
             nn.Dropout(0.5),
@@ -117,22 +117,22 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
             nn.Linear(128, num_classes),
          )
   ```
-  **Результат**: ❌ 
+  _Результат_: 
    
-  - Изменить предобработку данных (изменить размер окна преобразования Фурье, размер наложения окна)
+  ❌ Изменить предобработку данных (изменить размер окна преобразования Фурье, размер наложения окна)
   ```
   ```
-  **Результат**: ❌ 
+  _Результат_: 
   
-  - Добавить аугментацию `mixup`
+  ✅ Добавить аугментацию `mixup`
   ```
   ```
-  **Результат**: ✅ 
+  _Результат_:   
   
-  - Изменить  `loss`
+  ✅ Изменить  `loss`
   ```
   ```
-  **Результат**: ✅ 
+  _Результат_:  
   
   - _Не успела попробовать - изменение `sampler` в `DataLoader`_
 
