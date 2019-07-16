@@ -163,4 +163,4 @@ torch.save(x['model_state_dict'],'./kaggle-freesound-2019-baseline/runs/0/last1.
   
   - _Не успела попробовать - изменение `sampler` в `DataLoader`_
 #
-Скор в соревновании: *to be continued* (когда откроют соревнование)
+Скор в соревновании: 0.55244 (top 24% (207/880))
